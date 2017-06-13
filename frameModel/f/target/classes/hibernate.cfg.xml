@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--设置驱动-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--&lt;!&ndash;设置数据库url&ndash;&gt;-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/test</property>-->
+        <!--&lt;!&ndash;数据库名&ndash;&gt;-->
+        <!--<property name="connection.username">root</property>-->
+        <!--&lt;!&ndash;密码&ndash;&gt;-->
+        <!--<property name="connection.password">123456</property>-->
+        <!--指定方言-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.format_sql" >true</property>
+        <property name="hibernate.show_sql">true</property>
+        <mapping resource="Person.hbm.xml"></mapping>
+        <!--<mapping class="entity.Person"></mapping>-->
+    </session-factory>
+</hibernate-configuration>

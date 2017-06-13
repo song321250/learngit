@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
+    <bean id="personDaoImpl" class="dao.dao.impl.PersonDaoImpl">
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    </bean>
+    <context:component-scan base-package="*"></context:component-scan>
+    <!--配置数据源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <!--设置驱动-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <!--设置数据库url-->
+        <property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+        <!--数据库名-->
+        <property name="username" value="root"></property>
+        <!--密码-->
+        <property name="password" value="123456"></property>
+        <!--最大连接数量-->
+        <!--<property name="maxActive" value="150"></property>-->
+
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+    </bean>
+    <!--配置事物-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!--基于注解的事务支持-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
