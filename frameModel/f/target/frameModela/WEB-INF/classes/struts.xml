@@ -23,5 +23,8 @@
             <action name="page" class="personAction" method="listPage">
                 <result name="success">index.jsp</result>
             </action>
+            <action name="upload1" class="personAction" method="uploadFile">
+                <result name="success">message.jsp</result>
+            </action>
     </package>
 </struts>

@@ -20,8 +20,8 @@
           <element id="library" level="project" name="Maven: asm:asm-tree:3.3" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.18" />
           <element id="library" level="project" name="Maven: javassist:javassist:3.11.0.GA" />
-          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.2" />
-          <element id="library" level="project" name="Maven: commons-io:commons-io:2.0.1" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.1" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-spring-plugin:2.3.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:3.1.1.RELEASE" />
@@ -56,6 +56,7 @@
           <element id="library" level="project" name="Maven: cglib:cglib:2.2.2" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-nop:1.6.4" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:servlet-api-2.5:6.1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
