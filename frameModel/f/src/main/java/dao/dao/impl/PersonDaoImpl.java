@@ -1,8 +1,10 @@
 package dao.dao.impl;
 
 import dao.PersonDao;
+import entity.Page;
 import entity.Person;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -20,18 +22,39 @@ public class PersonDaoImpl   implements PersonDao  {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-
-    @Override
-    public List<Person> getAll() {
-        String sql =" from Person";
-        return sessionFactory.getCurrentSession().createQuery(sql).list();
+    public Session getSession(){
+        return sessionFactory.getCurrentSession();
     }
 
-//    public SessionFactory getSessionFactory() {
-//        return sessionFactory;
-//    }
-//
-//    public void setSessionFactory(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
+    public List<Person> getAll() {
+        String sql =" from Person ";
+        return getSession().createQuery(sql).list();
+    }
+
+    public void add(Person p) {
+        getSession().save(p);
+    }
+
+    public Person getOne(Person p) {
+        return (Person) getSession().get(Person.class,p.getPid());
+    }
+
+    public Page getPage(Page page) {
+        Session session= getSession();
+        String hql="from Person";
+        Query query =session.createQuery(hql);
+        query.setFirstResult(page.getPageIndex());
+        query.setMaxResults(page.getPageNum());
+        page.setList(query.list());
+        return page;
+    }
+
+    public void del(Person p) {
+        getSession().delete(p);
+    }
+
+    public void update(Person p) {
+        getSession().update(p);
+    }
+
 }

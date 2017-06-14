@@ -12,7 +12,9 @@
 </head>
 <body>
     <form action="wc" method="post">
-        <input type="text" name="username"/>&nbsp;<input type="submit" value="send"/><br>
+        请输入用户名：<input type="text" name="person.username"/><br>
+        请输入密码：<input type="password" name="person.password">
+        <input type="submit" value="send"/><br>
     </form>
 </body>
 </html>

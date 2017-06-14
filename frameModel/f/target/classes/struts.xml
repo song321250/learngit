@@ -5,8 +5,23 @@
 
 <struts>
     <package name="default" extends="struts-default" >
-            <action name="wc" class="action.PersonAction" method="login">
-                    <result name="success">index.jsp</result>
+            <action name="wc" class="personAction" method="login">
+                    <result name="success" type="chain">page</result>
+            </action>
+            <!--<action name="show" class="personAction" method="listPerson">-->
+                    <!--<result name="success">index.jsp</result>-->
+            <!--</action>-->
+            <action name="edit" class="personAction" method="edit">
+                <result name="success" >edit.jsp</result>
+            </action>
+            <action name="del1" class="personAction" method="del">
+                <result name="success" type="redirect">page</result>
+            </action>
+            <action name="update" class="personAction" method="update">
+                    <result name="success" type="redirect">page</result>
+            </action>
+            <action name="page" class="personAction" method="listPage">
+                <result name="success">index.jsp</result>
             </action>
     </package>
 </struts>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd " >
     <bean id="personDaoImpl" class="dao.dao.impl.PersonDaoImpl">
         <!--<property name="sessionFactory" ref="sessionFactory"/>-->
     </bean>
@@ -28,10 +30,27 @@
         <property name="dataSource" ref="dataSource"></property>
         <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
     </bean>
+    <!--配置切面-->
+    <aop:config>
+            <aop:pointcut id="point" expression="execution(* service.*.*(..))"></aop:pointcut>
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="point"></aop:advisor>
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*"/>
+            <tx:method name="del*"/>
+            <tx:method name="update*"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+
+    </tx:advice>
     <!--配置事物-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+
+
     <!--基于注解的事务支持-->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <import resource="classpath:springAction.xml"></import>
 </beans>

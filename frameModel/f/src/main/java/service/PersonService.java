@@ -2,6 +2,7 @@ package service;
 
 import dao.PersonDao;
 import dao.dao.impl.PersonDaoImpl;
+import entity.Page;
 import entity.Person;
 import org.springframework.stereotype.Service;
 
@@ -19,4 +20,23 @@ public class PersonService {
        List<Person> list = pd.getAll();
         return list;
     }
+
+    public void add(Person p){
+        pd.add(p);
+    }
+    public Person getOne(Person p){
+        return  pd.getOne(p);
+    }
+    public void update(Person p){
+        pd.update(p);
+    }
+    public void del(Person p){
+        pd.del(p);
+    }
+
+    public Page getPage(Page page){
+        return pd.getPage(page);
+    }
+
+
 }

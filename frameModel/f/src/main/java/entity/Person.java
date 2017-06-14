@@ -1,11 +1,13 @@
 package entity;
 
 
+import java.io.Serializable;
+
 /**
  * Created by song on 2017/6/9.
  */
 
-public class Person {
+public class Person implements Serializable{
 
     private int pid;
     private String username;
