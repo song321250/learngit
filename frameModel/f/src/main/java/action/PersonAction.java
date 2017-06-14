@@ -16,10 +16,11 @@ public class PersonAction extends ActionSupport {
     @Resource(name = "personService")
     PersonService ps;
     private Person person;
-    private Page page =new Page();
+    private Page pages;
     private List<Person> list;
     public String login(){
         try {
+
             ps.add(person);
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,6 +30,7 @@ public class PersonAction extends ActionSupport {
     }
 
     public String listPerson(){
+
         list = ps.getAll();
         return SUCCESS;
     }
@@ -50,7 +52,10 @@ public class PersonAction extends ActionSupport {
         return SUCCESS;
     }
     public String listPage(){
-        page =ps.getPage(page);
+        if(pages==null){
+            pages= new Page();
+        }
+        pages =ps.getPage(pages);
         return SUCCESS;
     }
 
@@ -78,5 +83,13 @@ public class PersonAction extends ActionSupport {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Page getPages() {
+        return pages;
+    }
+
+    public void setPages(Page pages) {
+        this.pages = pages;
     }
 }

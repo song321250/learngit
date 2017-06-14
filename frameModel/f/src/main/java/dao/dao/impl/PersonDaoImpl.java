@@ -7,6 +7,7 @@ import entity.Person;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,8 @@ public class PersonDaoImpl   implements PersonDao  {
         Query query =session.createQuery(hql);
         query.setFirstResult(page.getPageIndex());
         query.setMaxResults(page.getPageNum());
-        page.setList(query.list());
+        List<Person> list = query.list();
+        page.setList(list);
         return page;
     }
 

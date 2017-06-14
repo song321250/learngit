@@ -14,16 +14,16 @@
         <td>密码</td>
         <td>操作</td>
     </tr>
-    <c:forEach items="${page.list}" var ="person">
+    <c:forEach items="${pages.list}" var ="person">
         <tr>
-        <td>${person.username}</td>
+        <td>${person.username}  </td>
         <td>${person.password}</td>
         <td><a href="edit?person.pid=${person.pid}">修改</a>  <a href="del1?person.pid=${person.pid}">删除</a></td>
         </tr>
     </c:forEach>
     <tr>
-        <td><a href="page?page.pageIndex=${page.pageIndex+1}">下一页</a></td>
-        <td><a href="page?page.pageIndex=${page.pageIndex-1}">上一页</a></td>
+        <td><a href="page?pages.pageIndex=${pages.pageIndex+1}">下一页</a></td>
+        <td><a href="page?pages.pageIndex=${pages.pageIndex-1}">上一页</a></td>
     </tr>
 </table>
 

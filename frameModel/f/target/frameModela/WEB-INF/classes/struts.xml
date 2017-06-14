@@ -6,7 +6,7 @@
 <struts>
     <package name="default" extends="struts-default" >
             <action name="wc" class="personAction" method="login">
-                    <result name="success" type="chain">page</result>
+                    <result name="success" type="redirect">page</result>
             </action>
             <!--<action name="show" class="personAction" method="listPerson">-->
                     <!--<result name="success">index.jsp</result>-->
