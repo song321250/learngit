@@ -59,4 +59,14 @@ public class PersonDaoImpl   implements PersonDao  {
         getSession().update(p);
     }
 
+    public boolean queryName(String username) {
+        boolean flag=true;
+        Query query =getSession().createQuery("from Person where username=:username");
+        query.setParameter("username",username);
+        Person p = (Person)query.uniqueResult();
+        if(p==null){
+            flag=false;
+        }
+        return flag;
+    }
 }

@@ -4,12 +4,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Page;
 import entity.Person;
 import org.apache.struts2.ServletActionContext;
-import service.PersonServiceImpl;
-
+import service.impl.PersonService;
 import javax.annotation.Resource;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 
@@ -18,7 +16,7 @@ import java.util.List;
  */
 public class PersonAction extends ActionSupport {
     @Resource(name = "personService")
-    PersonServiceImpl ps;
+    PersonService ps;
     private Person person;
     private Page pages;
     private List<Person> list;
@@ -75,6 +73,42 @@ public class PersonAction extends ActionSupport {
             return ERROR;
         }
         return SUCCESS;
+    }
+
+
+    private String username;
+
+    public String getAjax(){
+        System.out.println(username);
+        boolean flag =ps.queryName(username);
+        String m="";
+        if(flag){
+            m="用户已存在";
+        }else{
+            m="可以注册";
+        }
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out =null;
+        try {
+            out =response.getWriter();
+            out.print(m);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<Person> getList() {

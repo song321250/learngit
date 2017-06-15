@@ -39,4 +39,8 @@ public class PersonServiceImpl implements PersonService{
         return  pd.getOne(p);
     }
 
+    public boolean queryName(String username) {
+
+        return pd.queryName(username);
+    }
 }

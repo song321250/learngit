@@ -15,4 +15,6 @@ public interface PersonService {
     public void update(Person p);//修改
     public Page getPage(Page page);//分页
     public Person getOne(Person p);//获得单个对象
+
+    public boolean queryName(String username);
 }

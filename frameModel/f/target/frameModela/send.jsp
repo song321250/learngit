@@ -10,11 +10,30 @@
 <head>
     <title>Title</title>
 </head>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#user").blur(function () {
+            var  value = $(this).val();
+            console.log(value);
+            $.ajax(
+                    {
+                        url: "ajaxTest",
+                        type:"GET",
+                        data:"username="+value,
+                        success:function (result) {
+                            $("#spanText").html(result);
+                        }});
+        });
+    })
+
+</script>
 <body>
     <form action="wc" method="post">
-        请输入用户名：<input type="text" name="person.username"/><br>
+        请输入用户名：<input type="text" name="person.username" id ="user"/><br><span id="spanText"></span>
         请输入密码：<input type="password" name="person.password">
         <input type="submit" value="send"/><br>
     </form>
 </body>
 </html>
+

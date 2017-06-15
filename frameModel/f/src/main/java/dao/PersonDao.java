@@ -15,4 +15,6 @@ public interface PersonDao {
     public void del(Person p);
 
     public Page getPage(Page page);
+
+    public boolean queryName(String username);
 }
