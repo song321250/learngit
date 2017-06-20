@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+    <select id="getPersonId" parameterType="int"  resultType="person" >
+        select usernamem,password from person where pid =#{id}
+    </select>
+    <select id="getPersinList" resultType="person" >
+        select * from person
+    </select>
+    <insert id="addPerson" parameterType="java.util.List">
+        <!--<![CDATA[-->
+      <!--insert into person(username,password)-->
+      <!--values-->
+        <!--]]>-->
+        <!--<foreach collection="list" item="person" index="index" separator=",">-->
+           <!--(#{person.username},#{person.password})-->
+        <!--</foreach>-->
+      insert into person(username,password) values(#{username},#{password})
+    </insert>
+</mapper>
+
