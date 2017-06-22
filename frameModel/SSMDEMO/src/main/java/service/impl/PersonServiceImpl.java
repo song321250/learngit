@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.UserMapper;
+import entity.Page;
 import entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 @Service("personService")
 public class PersonServiceImpl implements PersonService {
+
     @Autowired
     private UserMapper userMapper;
 
@@ -27,10 +29,30 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public int delPerson(Person person) {
-        return 0;
+
+        return userMapper.delPerson(person);
     }
 
     public int updatePerson(Person person) {
-        return 0;
+        return userMapper.updatePerson(person);
+    }
+
+    public Person getOne(Person person) {
+        return userMapper.getOne(person);
+    }
+
+    public List<Person> isExit(Person person) {
+
+        return userMapper.isExit(person);
+    }
+
+    public int getPersonCount() {
+
+        return userMapper.getPersonCount();
+    }
+
+    public List<Person> findPage(Page page) {
+
+        return userMapper.findPage(page);
     }
 }

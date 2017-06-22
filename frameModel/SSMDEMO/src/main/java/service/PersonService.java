@@ -1,5 +1,6 @@
 package service;
 
+import entity.Page;
 import entity.Person;
 
 import java.util.List;
@@ -17,5 +18,10 @@ public interface PersonService {
 
     public int updatePerson(Person person);//修改
 
+    public Person getOne(Person person);
 
+    public List<Person> isExit(Person person);
+    public int getPersonCount();
+
+    public List<Person> findPage(Page page);//分页
 }

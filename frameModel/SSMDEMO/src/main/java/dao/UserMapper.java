@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Page;
 import entity.Person;
 import java.util.List;
 
@@ -16,4 +17,11 @@ public interface UserMapper {
     public int delPerson(Person person);
 
     public int updatePerson(Person person);
+    public Person getOne(Person person);
+
+    public List<Person> isExit(Person person);
+
+    public List<Person> findPage(Page page);
+
+    public int getPersonCount();
 }

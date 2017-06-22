@@ -1,4 +1,4 @@
-<%--
+<%@ page import="javax.naming.Context" %><%--
   Created by IntelliJ IDEA.
   User: song
   Date: 2017/6/20
@@ -18,14 +18,20 @@
             <td>用户id</td>
             <td>用户名</td>
             <td>密码</td>
+            <td>操作</td>
         </tr>
-        <c:forEach items="${list}" var="person">
+        <c:forEach items="${pages.list}" var="person">
             <tr>
                 <td>${person.pid}</td>
                 <td>${person.username}</td>
                 <td>${person.password}</td>
+                <td><a href="/SSMDEMO/person/del?pid=${person.pid}">删除</a> <a href="/SSMDEMO/person/getOne?pid=${person.pid}">修改</a></td>
             </tr>
         </c:forEach>
+        <tr>
+            <td><a href="/SSMDEMO/person/findPage?pageIndex=${pages.pageIndex+1}">下一页</a></td>
+            <td><a href="/SSMDEMO/person/findPage?pageIndex=${pages.pageIndex-1}">上一页</a></td>
+        </tr>
     </table>
 
 </body>

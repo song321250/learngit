@@ -11,9 +11,10 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!--开启自动扫描-->
     <!--&lt;!&ndash; 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 &ndash;&gt;-->
-    <!--<context:component-scan base-package="action"></context:component-scan>-->
+    <context:component-scan base-package="action"></context:component-scan>
     <!--&lt;!&ndash; 一个配置节解决映射器和适配器的配置注解配置 &ndash;&gt;-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven ></mvc:annotation-driven>
+
 
 
 

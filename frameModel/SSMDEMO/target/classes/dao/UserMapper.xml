@@ -19,5 +19,32 @@
         <!--</foreach>-->
       insert into person(username,password) values(#{username},#{password})
     </insert>
+    <delete id="delPerson" parameterType="person">
+        delete from person where pid =#{pid}
+    </delete>
+    <select id="getOne" parameterType="person" resultType="person">
+        SELECT * FROM  person where pid=#{pid}
+
+    </select>
+    <select id="isExit" parameterType="person" resultType="person">
+        select * from person where username = #{username}
+    </select>
+    <update id="updatePerson" parameterType="person">
+        UPDATE person set
+        <if test="username!=null">
+            username =#{username},
+        </if>
+        <if test="password!=null">
+            password =#{password}
+        </if>
+        where pid =#{pid}
+    </update>
+    <!--分页-->
+    <select id="findPage" parameterType="entity.Page" resultType="person">
+         select * from person limit ${pageIndex*pageNum},#{pageNum}
+    </select>
+    <select id="getPersonCount" resultType="int">
+        SELECT count(*) from person
+    </select>
 </mapper>
 
